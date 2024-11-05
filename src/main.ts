@@ -1,19 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { MyService } from './service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   template: `
-    Hello world!
+    {{url}}
   `,
 })
 export class PlaygroundComponent {
-  private readonly route = inject(ActivatedRoute);
+  private readonly service = inject(MyService);
+  url: string;
 
   constructor() {
-    this.route;
+    this.url = this.service.getData();
   }
 }
 
